@@ -8,25 +8,23 @@
     <title>Huvudsida</title>
     <script src="Javascript/huvudsida.js"></script>
 </head>
+<body>
       <h1 class="title">Shoppinglista</h1>
       <div class="input-container">
-        <input type="text" id="item-input" placeholder="Enter item...">
+        <input type="text" id="item-input" placeholder="Lägg till vara...">
         <button id="add-button">Lägg till</button>
       </div>
-      <table name="varatable">
+      <table>
         <tr>
-          <th></th>
           <th>Vara</th>
           <th>Actions</th>
         </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>Bananer</td>
-          <td>
-            <button class="edit-button">Redigera</button>
-            <button class="delete-button">Radera</button>
-          </td>
-        </tr>
+        <tbody id="varatable">
+      
+        </tbody>
       </table>
+      <section id="inputForm">
+        <input type="text" id="inputKategori">
+    </section>
     </body>
     </html>

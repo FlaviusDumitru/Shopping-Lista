@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    background-color:#B0E3E6;
   }
   
   .title {
@@ -23,3 +24,4 @@ body {
   .edit-button, .delete-button {
     margin-left: 5px;
   }
+  
