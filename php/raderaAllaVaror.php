@@ -1,5 +1,9 @@
 <?php
 declare (strict_types=1);
+
+// Läs in gemensamma funktioner
+require_once "funktioner.php";
+
     // Kontrollera id
     $kollatID = filter_var($id, FILTER_VALIDATE_INT);
     if (!$kollatID || $kollatID < 1) {
