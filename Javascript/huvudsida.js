@@ -1,6 +1,9 @@
 serverurl ="php/"
 
 window.onload = function (){
+    document.getElementById("add-button").onclick=function(){
+        saveProduct();
+    }
     getProducts();
 }
 
@@ -15,6 +18,29 @@ window.onload = function (){
                 console.log(data);
                 appendProducts(data);
             })
+    }
+
+// sparar vara
+function saveProduct() {
+    let varor = document.getElementById('item-input').value;
+    let FD = new FormData();
+    FD.append("vara", varor);
+
+        // Hämtar och sparar med fetch genom POST
+        fetch(serverurl+'sparaVara.php',
+        {
+            method:'POST',
+            body:FD
+        })
+        .then(function (response) {
+            if (response.status == 200) {
+                return response.json();
+            } 
+        })
+        .then(function (data) {
+            getProducts();
+        })
+
     }
 
 function appendProducts(data){
