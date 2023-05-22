@@ -7,7 +7,6 @@ try {
     echo "<p class = 'error'>";
     echo "Något gick JÄTTEfel!<br>";
     echo $e -> getMessage ();
-    eco "</p>";
+    echo "</p>";
 }
 
-exit;
