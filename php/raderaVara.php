@@ -1,37 +1,40 @@
 <?php
 declare (strict_types=1);
 
-// Läs in gemensamma funktioner
-require_once "funktioner.php"; 
+// Koppla gemensamma funktioner
+require_once "funktioner.php";
 
-    // Kolla indata
-    $kollatID = filter_input(INPUT_POST, "id" , FILTER_VALIDATE_INT);
-    if (!$kollatID || $kollatID < 1) {
-        $out = new stdClass();
-        $out->error = ["Felaktig indata", "$id är inte giltigt"];
-        return new Response($out, 400);
-    }
-    // Koppla mot databas
-    $db = connectDB();
-    
-    // Förbered och exekvera SQL
-    $stmt = $db -> prepare ("DELETE FROM varor WHERE id=:id");
-    $stmt -> execute (["id"=>$kollatID]);
-    
-    // Skicka svar
-    $antalPoster = $stmt->rowCount();
-    if($antalPoster===0) {
-        $out = new stdClass();
-        $out -> result=false;
-        $out -> message=["Radera post misslyckades", "Inga poster raderades"];
-        return new Response($out);
-    } else {
-        $out = new stdClass();
-        $out -> result=true;
-        $out -> message=["Radera post lyckades", "$antalPoster poster raderades"];
+// Läs och kontrollera indata
+// Rätt metod
+if ($_SERVER['REQUEST_METHOD']!=='POST') {
+    $error=new stdClass();
+    $error->meddelande=["Wrong method", "Sidan ska anropas med POST"];
+    skickaJSON($error, 405);
+}
 
-    }
-    // Skicka tillbaka svar
-skickaJSON($out);
-    
+// Kontrollera id
+$id=filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
+if(!$id || $id<1) {
+    $error=new stdClass();
+    $error->meddelande=["Bad request", "'id' saknas eller är ogiltigt"];
+    skickaJSON($error,400);
+}
 
+// Koppla databas
+$db = connectDB();
+
+// Skapa sql och exekvera den
+$sql="DELETE FROM varor WHERE id=:id";
+$stmt=$db->prepare($sql);
+$stmt->execute(['id' => $id]);
+
+
+// Skicka svar
+$out = new stdClass();
+if($stmt->rowCount()===0) {
+    $out->meddelande=["Posten kunde inte raderas"];
+    skickaJSON($out, 400);
+} else {
+    $out->meddelande=["OK"];
+    skickaJSON($out);
+}
