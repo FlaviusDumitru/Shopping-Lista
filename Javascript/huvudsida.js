@@ -43,11 +43,37 @@ function saveProduct() {
 
     }
 
+function raderaVara(id){
+        let FD = new FormData();
+         FD.append("id", id);
+        // Hämtar och sparar med fetch genom POST
+        fetch(serverurl+'raderaVara.php',
+        {
+            method:'POST',
+            body:FD
+        })
+        .then(function (response) {
+            if (response.status == 200) {
+                return response.json();
+            } 
+        })
+        .then(function (data) {
+            getProducts();
+        })
+
+    }
+
 function appendProducts(data){
    
     tabell = document.getElementById("varatable");
     tabell.innerHTML="";
 
+        // Create and append checkbox cell
+        let td_checkbox = document.createElement('td');
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = 'checkbox'+ checkbox;
+        td_checkbox.appendChild(checkbox);
 
 for (let i = 0; i < data.length; i++) {
         let tr = document.createElement('tr');
@@ -68,8 +94,8 @@ for (let i = 0; i < data.length; i++) {
         let a_radera = document.createElement('a');
         a_radera.innerHTML = "D";
         a_radera.onclick=function(){
-            if(confirm("Vill du radera varan?")){
-                saveActivity(tasks[i].id,"radera")}
+            if(confirm("Vill du radera varan med nummer " + data[i].id + "?")){
+                raderaVara(data[i].id)}
             }
         td_radera.appendChild(a_radera);
 
