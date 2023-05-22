@@ -68,17 +68,17 @@ function appendProducts(data){
     tabell = document.getElementById("varatable");
     tabell.innerHTML="";
 
-        // Create and append checkbox cell
+for (let i = 0; i < data.length; i++) {
+        let tr = document.createElement('tr');
+        let td_text = document.createElement ("td");
+        td_text.innerHTML = data[i].namn;
+    
+    // Skapar Checkbox cell
         let td_checkbox = document.createElement('td');
         let checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = 'checkbox'+ checkbox;
         td_checkbox.appendChild(checkbox);
-
-for (let i = 0; i < data.length; i++) {
-        let tr = document.createElement('tr');
-        let td_text = document.createElement ("td");
-        td_text.innerHTML = data[i].namn;
         
     
     // Skapar redigera knapp och lägger den i tabellen
@@ -100,6 +100,7 @@ for (let i = 0; i < data.length; i++) {
         td_radera.appendChild(a_radera);
 
                 // Visar celler och knappar
+                tr.appendChild(td_checkbox);
                 tr.appendChild(td_text);
                 tr.appendChild(td_redigera);
                 tr.appendChild(td_radera);
