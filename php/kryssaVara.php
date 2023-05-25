@@ -28,7 +28,7 @@ $sql ="UPDATE varor SET checked=NOT(checked) where id=:id";
 $stmt=$db->prepare($sql);
 $stmt->execute (["id"=>$id]);
 
-if(!$stmt->rowCount()===0){
+if($stmt->rowCount()===0){
     $error = new stdClass();
     $error -> meddelande=["Bad request", "Kunde inte uppdatera varan"];
     skickaJSON($error, 400);

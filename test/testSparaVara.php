@@ -9,7 +9,6 @@ try {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     // Anropen till sidan som ska testas
-
     // Fel anrop (GET)
     echo "<p class='info'> Test av fel anropsmetod</p>";
     felMetod($ch); 
@@ -98,18 +97,6 @@ function varaSaknas($curlHandle) {
     // Skriv ut resultatet
     if ($status === 400) {
         echo "<p class = 'ok'> Förväntat svar 400 </p>";
-    } else {
-        echo "<p class = 'error'> Fick status = $status istället för förväntat 405</p>";
-    }
-}
-function felMetod($curlHandle) {
-    // Gör anrop och ta hand om returstränger
-   $jsonSvar = curl_exec($curlHandle);
-    // Hämta status för anropet
-    $status = curl_getinfo($curlHandle, CURLINFO_RESPONSE_CODE);
-    
-    if($status === 405) {
-        echo "<p class = 'ok'> Svar 405 stämmer med förväntat svar</p>";
     } else {
         echo "<p class = 'error'> Fick status = $status istället för förväntat 405</p>";
     }
