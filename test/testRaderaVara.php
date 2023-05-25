@@ -1,9 +1,8 @@
 <?php
 declare (strict_types = 1);
-
+require_once  "../php/funktioner.php";
 try {
-    require_once  "../php/funktioner.php";
-
+    
     // Skapa handle till cUrl för att läsa svaret
     $ch = curl_init ('http://localhost/Shoppinglista/php/raderaVara.php');
 
