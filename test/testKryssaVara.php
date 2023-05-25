@@ -51,7 +51,6 @@ function tabortKryss($curlHandle) {
     // Sätt kryss och kontrollera att det är satt
     kryssaVara($id);
     $vara = lasVara($id);
-    var_dump ($vara);
     if (!$vara -> Checked) {
         echo "<p class = 'error'> Kunde inte sätta kryss, avbryter testet </p>";
         raderaVara($id);
