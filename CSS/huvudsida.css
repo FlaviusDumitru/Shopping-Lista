@@ -24,4 +24,43 @@ body {
   .edit-button, .delete-button {
     margin-left: 5px;
   }
-  
+  #add-button {
+    background-color:#CDEB8B;
+    border-radius: 0.20em;
+  }
+  #RaderaValda {
+    background-color:#eb988b;
+    border-radius: 0.20em;
+  }
+  #RaderaAlla {
+    background-color:#eb988b;
+    border-radius: 0.20em;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .rounded-table {
+    border-radius: 10px;
+    overflow: hidden;
+  }

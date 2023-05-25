@@ -46,7 +46,7 @@ function saveProduct() {
 }
 
 function raderaVara(id) {
-    if (confirm("Vill du radera varan med nummer " + id + "?")) {
+    if (confirm("Vill du radera varan?")) {
 
     let FD = new FormData();
     FD.append("id", id);
@@ -161,7 +161,7 @@ function raderaAlla() {
 }
 
 function raderaKryssade() {
-    if (confirm("Vill du verkligen radera")) {
+    if (confirm("Vill du verkligen radera kryssade varor?")) {
 
     fetch(serverurl + 'raderaValda.php',
     {
