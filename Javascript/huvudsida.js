@@ -114,8 +114,9 @@ function appendProducts(data) {
 
         // Skapar redigera knapp och lägger den i tabellen
         let td_redigera = document.createElement('td');
-        let redigera = document.createElement('a');
-        redigera.innerHTML = "E";
+        let redigera = document.createElement('span');
+        redigera.innerHTML = "edit";
+        redigera.classList = "material-icons"
         redigera.onclick = function () {
             redigeraVara(data[i].id)
         }
@@ -123,8 +124,9 @@ function appendProducts(data) {
 
         // Skapar radera knapp och lägger den i tabellen
         let td_radera = document.createElement('td');
-        let a_radera = document.createElement('a');
-        a_radera.innerHTML = "D";
+        let a_radera = document.createElement('span');
+        a_radera.classList = "material-icons";
+        a_radera.innerHTML = "delete";
         a_radera.onclick = function () {
                 raderaVara(data[i].id)
         }
@@ -201,6 +203,10 @@ function uppdateraVara(id) {
             getProducts();
         })
         document.getElementById('item-input').value = '';
+        document.getElementById('add-button').innerHTML = 'Lägg till';
+        document.getElementById("add-button").onclick = function () {
+            saveProduct();
+        }
     }
 }
 // redigerar varan

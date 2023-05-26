@@ -16,13 +16,8 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
-  
-  th, td {
-    padding: 5px 10px;
-  }
-  
   .edit-button, .delete-button {
-    margin-left: 5px;
+    margin-left: 0.01em;
   }
   #add-button {
     background-color:#CDEB8B;
@@ -36,14 +31,10 @@ body {
     background-color:#eb988b;
     border-radius: 0.20em;
   }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
 
   th, td {
-    border: 1px solid black;
-    padding: 8px;
+    border: 0.1em solid black;
+    padding: 0.75em;
     text-align: left;
   }
 
@@ -61,6 +52,6 @@ body {
   }
 
   .rounded-table {
-    border-radius: 10px;
+    border-radius: 1.5em;
     overflow: hidden;
   }
