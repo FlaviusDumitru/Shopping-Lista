@@ -14,9 +14,16 @@ if ($_SERVER['REQUEST_METHOD']!=='POST') {
 // Koppla databas
 $db = connectDb();
 
+$listnr=filter_input(INPUT_POST, "listnr", FILTER_VALIDATE_INT);
+if (!$listnr || $listnr<1) {
+    $error = new stdClass();
+    $error -> meddelande =["Bad request", "'listnr' saknas eller är ogiltigt"];
+    skickaJSON($error, 400);
+}
 // Radera valda varor
-$sql = "DELETE FROM varor WHERE checked=1";
-$stmt = $db -> query($sql);
+$sql = "DELETE FROM varor WHERE checked=1 AND ListNR = :listnr";
+$stmt = $db -> prepare($sql);
+$stmt -> execute(['listnr' => $listnr]);
 
 // Skicka svar
 $out = new stdClass ();
