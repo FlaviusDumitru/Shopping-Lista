@@ -16,7 +16,7 @@ try {
     
     // Test ok
     echo "<p class = 'info'> Test radera valda OK</p>";
-   raderaValda($ch);
+    raderaValda($ch);
 
 } catch (Exception $e) {
     echo "<p class = 'error'>";

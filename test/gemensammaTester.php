@@ -15,9 +15,9 @@ function felMetod($curlHandle) {
     }
 }
 
-function skapaVara( string $vara, $listnr):int {
+function skapaVara( string $vara):int {
     $db = connectDB();
-    if ($db -> exec ("INSERT INTO varor (namn, listnr) VALUES ('$vara', $listnr)" )) {
+    if ($db -> exec ("INSERT INTO varor (namn) VALUES ('$vara')")) {
         return (int) $db -> lastInsertId();
     }
 
@@ -99,7 +99,7 @@ function idSaknas ($curlHandle, string $vara = null) {
     }
 
     curl_setopt ($curlHandle, CURLOPT_POSTFIELDS, $data);
-
+    
     // Skicka anrop
     $jsonSvar = curl_exec ($curlHandle);
     $status = curl_getinfo ($curlHandle, CURLINFO_RESPONSE_CODE);
@@ -144,6 +144,7 @@ function raderaValda ($curlHandle) {
 
     // Läs in alla varor (för att återställa senare)
     $varor = hamtaAllaVaror();
+    $listnr = 
 
     // Kryssa alla varor
     foreach ($varor as $v) {

@@ -6,8 +6,8 @@ function connectDB(): PDO {
 
     if($db===null){
     // Koppla mot databasen
-    $dsn='mysql:dbname=shopping;host=localhost';
-    $dbUser = 'root';
+    $dsn='mysql:dbname=DB47487;host=localhost';
+    $dbUser = '47487';
     $dbPassword = "";
     $db = new PDO($dsn,$dbUser,$dbPassword);
     }
@@ -15,7 +15,7 @@ function connectDB(): PDO {
     return $db;
 }
 
-
+    // Skicka json meddelande
 function skickaJSON($data, int $status=200):never {
     $statusText = getStatusMeddelande($status);
     header ("$statusText;Content-type:application/json;charset=utf-8");
@@ -23,7 +23,7 @@ function skickaJSON($data, int $status=200):never {
     echo $json;
     exit;
 }
-
+    // Hämtar statusmeddelande
 function getStatusMeddelande(int $status):string{
     switch ($status) {
         case 200:
